@@ -5,6 +5,8 @@ git submodule update --init --recursive
 uv venv --python 3.10 .venv
 source .venv/bin/activate
 uv pip install -r requirements.txt -i https://mirrors.aliyun.com/pypi/simple/ --trusted-host=mirrors.aliyun.com --extra-index-url https://pypi.nvidia.com --index-strategy unsafe-best-match --no-cache-dir
+
+uv pip install fastapi flask flask_cors ffmpeg -i https://mirrors.aliyun.com/pypi/simple/ --no-cache-dir
 ```
 
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=CosyVoice🤠&text2=Text-to-Speech%20💖%20Large%20Language%20Model&width=800&height=210)](https://github.com/Akshay090/svg-banners)
