@@ -24,7 +24,7 @@ import shutil
 
 import json
 
-cosyvoice = CosyVoice2('pretrained_models/CosyVoice2-0.5B')
+cosyvoice = CosyVoice2('pretrained_models/CosyVoice-300M')
 
 default_voices = cosyvoice.list_available_spks()
 

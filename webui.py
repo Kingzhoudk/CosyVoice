@@ -34,7 +34,7 @@ from cosyvoice.utils.file_utils import load_wav, logging
 from cosyvoice.utils.common import set_all_random_seed
 
 try:
-    shutil.copy2('spk2info.pt', 'pretrained_models/CosyVoice2-0.5B/spk2info.pt')
+    shutil.copy2('spk2info.pt', 'pretrained_models/CosyVoice-300M/spk2info.pt')
 except Exception as e:
     logging.warning(f'复制文件失败: {e}')
 
@@ -201,13 +201,13 @@ def validate_input(mode, tts_text, sft_dropdown, prompt_text, prompt_wav, instru
         str: 错误信息
     """
     if mode in ['自然语言控制']:
-        if not cosyvoice.is_05b and cosyvoice.instruct is False:
+        if cosyvoice.instruct is False:
             return False, f'您正在使用自然语言控制模式, {args.model_dir}模型不支持此模式'
         if not instruct_text:
             return False, '您正在使用自然语言控制模式, 请输入instruct文本'
             
     elif mode in ['跨语种复刻']:
-        if not cosyvoice.is_05b and cosyvoice.instruct is True:
+        if cosyvoice.instruct is True:
             return False, f'您正在使用跨语种复刻模式, {args.model_dir}模型不支持此模式'
         if not prompt_wav:
             return False, '您正在使用跨语种复刻模式, 请提供prompt音频'
@@ -498,7 +498,7 @@ if __name__ == '__main__':
                         default=8080)
     parser.add_argument('--model_dir',
                         type=str,
-                        default='pretrained_models/CosyVoice2-0.5B',
+                        default='pretrained_models/CosyVoice-300M',
                         help='local path or modelscope repo id')
     parser.add_argument('--open', 
                         action='store_true', 
